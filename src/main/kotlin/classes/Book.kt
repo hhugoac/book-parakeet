@@ -44,6 +44,7 @@ class Book {
             else if(!title is String || !author is String || !gender is String || !summary is String){
                 println("El campo titulo, autor, genero o resumen debe ser del tipo String")
             }
+            return true
         }
 
 
