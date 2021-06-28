@@ -35,13 +35,13 @@ class Book {
                 println("El campo genero no puede tener mas de 15 caracteres")
                 return false
             }
-            else if(!pages is Int){
+            else if(pages is Int){
                 println("El campo pages debe ser del tipo Int")
             }
             else if(summary.length > 100){
                 println("El campo resumen no puede contener mas de 100 caracteres")
             }
-            else if(!title is String || !author is String || !gender is String || !summary is String){
+            else if(title is String || author is String || gender is String || summary is String){
                 println("El campo titulo, autor, genero o resumen debe ser del tipo String")
             }
             return true

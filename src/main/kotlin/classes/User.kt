@@ -8,6 +8,7 @@ class User (name:String, lastName:String, email:String,phone:String,password:Str
         var email:String=""
         var phone: String=""
         var password: String=""
+        var birthday: String = ""
 
         init{
             validateData(name,"name")
@@ -16,7 +17,7 @@ class User (name:String, lastName:String, email:String,phone:String,password:Str
             validateData(phone,"phone")
             validateData(password,"password")
         }
-        private validateData(valor:String,campo:String){
+        private fun validateData(valor:String,campo:String){
             when(campo){
                 "name" -> {
                     if(valor.length > 15){
