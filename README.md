@@ -1,7 +1,8 @@
 # Tinder de libros
 
 ## Tabla de contenido
-* [Integrantes] (#integrantes)
+
+* [Integrantes](#integrantes)
 * [Nombre del proyecto](#nombre-del-proyecto)  
 * [Descripción](#Descripción)
 * [Historias de usuario](#historias-de-usuario)  
