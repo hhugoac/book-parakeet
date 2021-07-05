@@ -5,13 +5,17 @@ class Login(user: String, password : String) {
     var loginMessage = "Sin registro"
     var isLogin = false
 
-    val userAndPasswordList = mapOf( "root" to "12345",
+    var userAndPasswordList = mapOf( "root" to "12345",
                                      "admin" to "23456",
                                      "secretary" to "5432",
                                      "bedu" to "bedu")
 
     init {
         validatePassword(user, password)
+    }
+
+    fun singUp(userName: String, password: String ) {
+        TODO("Add a user in the map userAndPasswordList")
     }
 
     private fun validatePassword(user: String, password: String){

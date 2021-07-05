@@ -8,18 +8,20 @@ class Book {
         var gender:String
         var pages:Int
         var summary:String
+        var isBorrowed: Boolean
 
-        constructor(title:String, author:String, gender:String, pages:Int,summary:String){
+        constructor(title:String, author:String, gender:String, pages:Int,summary:String, isBorrowed: Boolean){
             this.title=title
             this.author=author
             this.gender=gender
             this.pages=pages
             this.summary=summary
+            this.isBorrowed = isBorrowed
         }
 
-        fun getBookDetails(){
-            println("El libro se llama $title de $author." +
-                    "Contiene $pages y es del genero $gender. Se trata de $summary")
+        fun getBookDetails() : String{
+            return "El libro se llama $title de $author." +
+                    "Contiene $pages y es del genero $gender. Se trata de $summary"
         }
 
         fun validateFields() : Boolean {
