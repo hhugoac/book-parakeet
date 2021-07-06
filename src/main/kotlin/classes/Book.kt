@@ -10,7 +10,7 @@ class Book {
         var summary:String
         var isBorrowed: Boolean
 
-        constructor(title:String, author:String, gender:String, pages:Int,summary:String, isBorrowed: Boolean){
+        constructor(title:String, author:String, gender:String, pages: Int, summary:String, isBorrowed: Boolean){
             this.title=title
             this.author=author
             this.gender=gender
@@ -19,7 +19,7 @@ class Book {
             this.isBorrowed = isBorrowed
         }
 
-        fun getBookDetails() : String{
+    fun getBookDetails() : String{
             return "El libro se llama $title de $author." +
                     "Contiene $pages y es del genero $gender. Se trata de $summary"
         }
@@ -33,17 +33,17 @@ class Book {
                 println("El campo autor no puede tener mas de 30 caracteres")
                 return false
             }
-            else if(gender.length > 15){
+            else if(gender.length > 20){
                 println("El campo genero no puede tener mas de 15 caracteres")
                 return false
             }
             else if(pages is Int){
                 println("El campo pages debe ser del tipo Int")
             }
-            else if(summary.length > 100){
+            else if(summary.length > 150){
                 println("El campo resumen no puede contener mas de 100 caracteres")
             }
-            else if(title is String || author is String || gender is String || summary is String){
+            else if(title !is String || author !is String || gender !is String || summary !is String){
                 println("El campo titulo, autor, genero o resumen debe ser del tipo String")
             }
             return true

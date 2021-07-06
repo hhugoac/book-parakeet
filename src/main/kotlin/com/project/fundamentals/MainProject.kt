@@ -3,8 +3,7 @@ package com.project.fundamentals
 import classes.Book
 import classes.Borrow
 import classes.Login
-import classes.User
-import sun.rmi.runtime.Log
+
 
 const val SPLASH_TEXT = "                                                               ,&                                   \n" +
         "                                        #&.                        /%                               \n" +
@@ -28,7 +27,7 @@ const val SPLASH_TEXT = "                                                       
         "                 *@@&% (@@@@                                                                        \n" +
         "                   @@@#                                                                             "
 
-val listOfBooks = listOf(Book("El principito",
+val listOfBooks = mutableListOf(Book("El principito",
     "Antoine de Saint-Exupéry",
     "Literatura infantil", 96, "La obra comienza presentando al protagonista de la historia, un aviador que siente que ha perdido la visión de niño que le acompañaba cuando era pequeño. Su avión sufre una avería en pleno desierto y tiene los recursos mínimos para sobrevivir apenas unos días, por lo que debe buscar alguna solución. Se encuentra con un niño, el Principito, muy misterioso, que le pide cosas muy extrañas. Él mismo siente la necesidad de explicar la naturaleza de este pequeño ser.",
             true),
@@ -59,7 +58,9 @@ fun main () {
     do{
         println("Presione: \n" +
                 "(1) Login \n" +
-                "(0) Exit")
+                "(2) Registrarse \n"+
+                "(0) Exit\n"+
+                "Ingresa una opción: ")
         option = readLine()!!.toInt()
         when(option) {
             1-> {
@@ -71,7 +72,13 @@ fun main () {
                 println(login.loginMessage)
                 option = if (login.isLogin) 0 else 1
             }
+            2 ->{
+                //Registro
+            }
             0 -> break
+            else -> {
+                println("Opción no valida. Intenta de nuevo")
+            }
         }
     }while (option !=0 )
 
@@ -85,7 +92,9 @@ fun main () {
                 "(4) Mostrar todos los libros \n" +
                 "(5) Mostrar los libros mas populares \n" +
                 "(6) Agregar nuevo libro \n" +
-                "(0) Exit")
+                "(7) Ver mis libros prestados \n"+
+                "(0) Exit\n"+
+                "Ingresa una opción:")
         option = readLine()!!.toInt()
         when(option) {
             1-> {
@@ -117,12 +126,19 @@ fun main () {
 
             }
             5-> {
+                //Mostrar los libros mas populares
 
             }
             6-> {
-
+                addBook(listOfBooks)
+            }
+            7-> {
+                //Ver mis libros prestados
             }
             0 -> break
+            else -> {
+                println("Opcion no valida. Intenta de nuevo")
+            }
         }
     }while (option !=0 )
 
