@@ -13,7 +13,7 @@ fun main() {
             print("Ingresa contraseña:")
             val password = readLine()?.toString()
             var login = Login("$email","$password")
-            login.validateLogin()
+//            login.validateLogin()
         }
     }
 }
