@@ -45,6 +45,9 @@ Cuando se seleccione ver los libros que se tienen registrados, se debe tener la 
 agregar un nuevo libro, editar los datos del libro, eliminar el libro.
 Ver las solicitudes al libro, rechazar o aceptar la solicitud del libro que se ha hecho.
 
+La siguiente imagen muestra nuestro diagrama de flujo simplificado
+![Diagrama de flujo](https://github.com/hhugoac/book-parakeet/blob/main/Diagrama-Flujo.png)
+
 ### Qué espero que haga el proyecto
 La interfaz de la aplicación debe ser lo mas amigable para que la interacción tenga el mejor 
 flujo
