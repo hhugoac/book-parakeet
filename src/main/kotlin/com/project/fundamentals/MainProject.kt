@@ -1,9 +1,6 @@
 package com.project.fundamentals
 
-import classes.Book
-import classes.Borrow
-import classes.Login
-import classes.User
+import classes.*
 import sun.rmi.runtime.Log
 
 const val SPLASH_TEXT = "                                                               ,&                                   \n" +
@@ -52,13 +49,16 @@ fun main () {
     readLine()
 
     var option = 1
-    var login : Login
+//    var login : Login
+    var login = Login()
     var user : String
     var password : String
+
 
     do{
         println("Presione: \n" +
                 "(1) Login \n" +
+                "(2) SignUp \n" +
                 "(0) Exit")
         option = readLine()!!.toInt()
         when(option) {
@@ -67,9 +67,17 @@ fun main () {
                 user = readLine()!!.toString()
                 println("Ingrese su nombre de password: ")
                 password = readLine()!!.toString()
-                login = Login(user, password)
+//                login = Login(user, password)
                 println(login.loginMessage)
+                login.signIn(user, password)
                 option = if (login.isLogin) 0 else 1
+            }
+            2 -> {
+                println("Ingrese su nombre de usuario con el que se registrara")
+                user = readLine()!!.toString()
+                println("Ingrese la contraseña con la que se registrara")
+                password = readLine()!!.toString()
+                login.singUp(user, password)
             }
             0 -> break
         }
@@ -125,10 +133,6 @@ fun main () {
             0 -> break
         }
     }while (option !=0 )
-
-    TODO("Book details")
-
-    TODO("Add book")
 }
 
 
