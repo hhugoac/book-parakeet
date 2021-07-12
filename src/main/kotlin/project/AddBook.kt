@@ -15,8 +15,10 @@ fun addBook(lista: MutableList<Book>) {
     val pages= readLine()!!.toInt()
     print("\nResumen:")
     val sum= readLine()!!.toString()
+    var id= lista.size
+    id=id+1
 
-    var newBook = Book("$book","$author","$gender", pages ,"$sum",true)
+    var newBook = Book(id, "$book","$author","$gender" ,pages,"$sum",true)
     val flag = newBook.validateFields()
     if (flag == true){
         lista.add(newBook)

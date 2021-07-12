@@ -3,14 +3,16 @@ package classes
 import java.util.*
 
 class Book {
-        var title:String
-        var author:String
-        var gender:String
-        var pages:Int
-        var summary:String
-        var isBorrowed: Boolean
+         var id:Int
+         var title:String
+         var author:String
+         var gender:String
+         var pages:Int
+         var summary:String
+         var isBorrowed: Boolean
 
-        constructor(title:String, author:String, gender:String, pages: Int, summary:String, isBorrowed: Boolean){
+        constructor(id:Int,title:String, author:String, gender:String, pages: Int, summary:String, isBorrowed: Boolean){
+            this.id=id
             this.title=title
             this.author=author
             this.gender=gender
@@ -48,7 +50,4 @@ class Book {
             }
             return true
         }
-
-
-
-    }
+}
