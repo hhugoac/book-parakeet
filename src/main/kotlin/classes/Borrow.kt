@@ -35,7 +35,7 @@ class Borrow (var bookBorrow: String,
         var fechaDev= dateReturn
         var plusdays= now.plusDays(10)
         if(plusdays.isEqual(fechaDev) == false){
-            println("$bookBorrow aun le quedan ${dateReturn.minus()}")
+           // println("$bookBorrow aun le quedan ${dateReturn.minus()}")
         }
     }
 

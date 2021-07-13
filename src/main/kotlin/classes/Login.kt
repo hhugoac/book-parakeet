@@ -1,44 +1,52 @@
 package classes
 
-/*<<<<<<< HEAD
-class Login (email: String,password: String){
-    var correo=email
-    var contrasena=password
+import javax.xml.bind.JAXBElement
 
-    fun validateLogin():Boolean{
-        if(correo == "admin" && contrasena == "123"){
-            println("Inicio de sesión exitoso! Bienvenido")
-            return true
-        }else if (correo.isEmpty() || correo != "admin" || contrasena.isEmpty() || contrasena != "123"){
-            println("Correo o contraseña erroneo, favor de verificar")
-            return false
-        }
-        return false
-    }
-=======
-
- */
-class Login(user: String, password : String) {
+class Login{
 
     var loginMessage = "Sin registro"
     var isLogin = false
 
+    var userAndPasswordList: MutableMap<String, String> = mutableMapOf(
+        "Jim" to "Loza",
+        "bedu" to "bedu")
 
-    var userAndPasswordList = mapOf( "root" to "12345",
-                                     "admin" to "23456",
-                                     "secretary" to "5432",
-                                     "bedu" to "bedu")
+    //init {
+      // validatePassword(user, password)
+    //}
 
-    init {
-        validatePassword(user, password)
+    fun singUp(userName: String, password: String): MutableMap<String, String> {
+        val flag= checkRegistered(userName,password)
+        if(flag == false){
+            userAndPasswordList.set(userName, password)
+            println("Usuario registrado con exito")
+            //println("Trayendo datos ${userAndPasswordList.get(userName)}")
+//        signIn(userName, password)
+            return userAndPasswordList
+        }else{
+            println("Usuario ya registrado. Inicia sesion")
+        }
+        return userAndPasswordList
     }
 
-    fun singUp(userName: String, password: String ) {
-        TODO("Add a user in the map userAndPasswordList")
+    private fun checkRegistered(userName:String,password: String):Boolean{
+        val filtered = userAndPasswordList.filterKeys { it==userName }
+        if(filtered.isEmpty()){
+            return false
+        }else{
+            if(filtered.containsValue(password)){
+                return true
+            }
+            else{
+                return false
+            }
+        }
     }
 
-    private fun validatePassword(user: String, password: String){
-        val isUserRegistered = user in userAndPasswordList.keys
+    private fun validatePassword(user: String, password: String) {
+
+        println("Lista en funcion validate $userAndPasswordList")
+        val isUserRegistered = user in userAndPasswordList
         if (!isUserRegistered) {
             loginMessage = "Sin registro o usuario invalido"
             isLogin = false
@@ -49,6 +57,11 @@ class Login(user: String, password : String) {
             loginMessage = "Contraseña incorrecta"
             isLogin = false
         }
+
+    }
+
+    fun signIn(user: String, password: String){
+        validatePassword(user, password)
     }
 
 /*
