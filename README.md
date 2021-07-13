@@ -5,6 +5,7 @@
 * [Integrantes](#integrantes)
 * [Nombre del proyecto](#nombre-del-proyecto)  
 * [Descripción](#Descripción)
+* [Función](#Función)
 * [Historias de usuario](#historias-de-usuario)  
 * [Requerimientos](#requerimientos)
 
@@ -19,6 +20,9 @@ Tinder de Libros es una aplicación que funciona para buscar y prestar libros qu
 a tu localidad. Por medio de un registro en la aplicación, se pueden agregar libros, y ver las
 solicitudes que se hacen al libro. Los prestamos tienen un periodo vigente suficiente para que
 el solicitante pueda leer el libro y tener comunicación con el prestador todo el tiempo.
+
+## Función
+Para ejecutar este programa, es necesario hacer "Run" en el archivo **MainProject.kt** ubicado en el package *com.project.fundamentals*
 
 ## Historias de usuario
 Hemos definido las siguientes historias de usuario:
