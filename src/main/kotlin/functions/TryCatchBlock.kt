@@ -1,6 +1,7 @@
 package functions
 
-fun TryCatchBlock(readLine: String?): Int {
+
+fun tryCatchBlock(readLine: String?): Int {
     try {
         return readLine?.toInt()!!
     }catch (e: Exception) {

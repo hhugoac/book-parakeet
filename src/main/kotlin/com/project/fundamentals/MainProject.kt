@@ -1,10 +1,8 @@
 package com.project.fundamentals
 
 import classes.Book
-import classes.Borrow
 import classes.Login
 import functions.*
-import kotlinx.coroutines.delay
 
 val listOfBooks = mutableListOf(Book(1,"El principito",
     "Antoine de Saint-Exupéry",
@@ -17,35 +15,30 @@ val listOfBooks = mutableListOf(Book(1,"El principito",
     Book(4,"Física", "Resnick, Robert", "Texto", 650, "", true)
 )
 
-
-var listOfBorrowBooks = listOf(
-    Borrow(listOfBooks.get(0).title,"bedu",210629),
-    Borrow(listOfBooks.get(1).title,"bedu",210629),
-    Borrow(listOfBooks.get(3).title,"hugo",210629)
-)
-
 suspend fun main () {
-    //This code uses coroutines to print a splash screen
 
+    //This code uses coroutines to print a splash screen
     val splash = Constants.SPLASH_TEXT.split("\n")
     splash.forEach {
         println(it)
-        delay(100)
+    //    delay(100)
 
     }
-    loading()
+    loading("Cargando")
     readLine()
 
-    var option = 1
+    //This block of code do the login or sigup
+    var option = -1
     var login : Login
     var user : String
     var password : String
 
+
     do{
-        printMenu(Constants.MENU_LOGIN, 3)
-        val line = readLine()?.toString()
-        option = TryCatchBlock(line)
-        //option = readLine()!!.toInt()
+        print(Constants.MENU_LOGIN)
+        val line = readLine()
+        option = tryCatchBlock(line)
+
         when(option) {
             1-> {
                 println("Ingrese su nombre de usuario: ")
@@ -53,7 +46,7 @@ suspend fun main () {
                 println("Ingrese su nombre de password: ")
                 password = readLine()!!.toString()
                 login = Login(user, password)
-                loading()
+                loading("Autenticando")
                 println(login.loginMessage)
                 option = if (login.isLogin) 0 else 1
             }
@@ -65,7 +58,7 @@ suspend fun main () {
                 password = readLine()!!.toString()
                 login = Login("", "")
                 login.singUp(user, password)
-                loading()
+                loading("Registrando")
                 println(login.loginMessage)
                 option = if (login.isLogin) 0 else 1
             }
@@ -74,9 +67,9 @@ suspend fun main () {
     }while (option !=0 )
 
     option = -1
-
+    //This block if code shows the main menu options
     do {
-        printMenu(Constants.MENU_MAIN, 7)
+        print(Constants.MENU_MAIN)
         try {
             option = readLine()!!.toInt()
             if (option >= 7 || option < 0) {
@@ -88,12 +81,10 @@ suspend fun main () {
         }
         when (option) {
             1 -> {
-                var i = 1
-                println("Catalogo de libros presione un numero para ver los detalles:")
-                for (book in listOfBooks) {
-                    println("$i ${book.title}")
-                    i++
-                }
+                println("LISTA DE LIBROS")
+                println("ID   TITULO")
+                listOfBooks.forEach { println("${it.id} ${it.title}") }
+                println("Ingrese el ID para ver detalles")
                 try {
                     var iBook = readLine()!!.toInt()
                     if (iBook > listOfBooks.size) {
@@ -105,34 +96,83 @@ suspend fun main () {
                 } catch (e: Exception) {
                     println("Hubo un error, ingrese una opcion valida $e")
                 }
-
             }
             2 -> {
-                println("Lista de libros disponibles:")
-                //for( book in listOfBooks) {
-                listOfBooks.forEach { if (!it.isBorrowed) println("${it.title}") }
-                readLine()
+                println("LIBROS DISPONIBLES")
+                println("ID-BOOK   TITLE")
+                listOfBooks.forEach { if (!it.isBorrowed) println("(${it.id}) ${it.title}") }
+                println("Ingrese el id del libro que desea solicitar:")
+
+                try {
+                    val id = readLine()!!.toInt()
+                    //Validar
+                    listOfBooks.forEach { if (it.id == id) it.isBorrowed = true }
+                    loading("Solicitando")
+                    println("Libro prestado")
+                    readLine()
+                } catch (e: Exception) {
+                    println("Hubo un error, ingrese una opcion valida $e")
+                }
             }
             3 -> {
-
+                println("LIBROS PRESTADOS")
+                println("ID-BOOK   TITLE")
+                listOfBooks.forEach { if (it.isBorrowed) println("(${it.id}) ${it.title}") }
+                println("Ingrese el id del libro que va a regresar:")
+                try {
+                    val id = readLine()!!.toInt()
+                    listOfBooks.forEach { if (it.id == id) it.isBorrowed = false }
+                    loading("Regresando libro")
+                    println("Libro devuelto")
+                    readLine()
+                } catch (e: Exception) {
+                    println("Hubo un error, ingrese una opcion valida $e")
+                }
             }
             4 -> {
+                listOfBooks.get(0).raiting = 4.6
+                listOfBooks.get(1).raiting = 3.0
+                listOfBooks.get(2).raiting = 4.0
+                listOfBooks.get(3).raiting = 2.0
 
+                listOfBooks.sortByDescending { it.raiting }
+                println("LIBROS MÁS POPULARES")
+                println("Calificación   Título")
+                listOfBooks.forEach { println("${it.raiting} ${it.title}") }
+                println("Libros más populares: $")
+                readLine()
             }
             5 -> {
-                //popularBooks(listOfPopularBooks)
+                val book1 = addBook(listOfBooks.size)
+                if(book1.id != -1 ) {
+                    listOfBooks.add(book1)
+                    loading("Agregando")
+                } else {
+                    println("Ocurrio un error no se pudo agregar el libro")
+                }
+                readLine()
             }
             6 -> {
-                val book1 = addBook(listOfBooks.size)
-                listOfBooks.add(book1)
+                println("LIBROS PRESTADOS")
+                println("ID TITULO")
+                listOfBooks.forEach { if (it.isBorrowed) println("${it.id} ${it.title}") }
+                readLine()
             }
             7 -> {
-                for (book in listOfBorrowBooks) {
-                    /*if (user == book.userName) {
-                        book.checkStatusBorrow()
-                    }*/
+                println("EVALUAR LIBRO")
+                println("ID   TITULO")
+                listOfBooks.forEach { println("${it.id} ${it.title}") }
+                println("Ingrese el ID para evaluar libro")
+                try {
+                    val id = readLine()!!.toInt()
+                    println("Ingrese la calificacion para evaluar libro")
+                    val raiting = readLine()!!.toDouble()
+                    listOfBooks.forEach { if (it.id == id) it.raiting = raiting }
+                    loading("Evaluando")
+                    println("Libro calificado")
+                }catch (e: Exception) {
+                    println("Ocurrio un error")
                 }
-                //Ver mis libros prestados
             }
             0 -> break
             else -> {
@@ -141,6 +181,7 @@ suspend fun main () {
         }
     } while (option != 0)
 }
+
 
 
 
