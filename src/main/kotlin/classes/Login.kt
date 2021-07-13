@@ -23,8 +23,7 @@ class Login(user: String, password : String) {
     var loginMessage = "Sin registro"
     var isLogin = false
 
-
-    var userAndPasswordList = mapOf( "root" to "12345",
+    var userAndPasswordList = mutableMapOf( "root" to "12345",
                                      "admin" to "23456",
                                      "secretary" to "5432",
                                      "bedu" to "bedu")
@@ -33,8 +32,10 @@ class Login(user: String, password : String) {
         validatePassword(user, password)
     }
 
+
     fun singUp(userName: String, password: String ) {
-        TODO("Add a user in the map userAndPasswordList")
+        userAndPasswordList[userName] = password
+        loginMessage = "Registro exitoso"
     }
 
     private fun validatePassword(user: String, password: String){
@@ -50,15 +51,5 @@ class Login(user: String, password : String) {
             isLogin = false
         }
     }
-
-/*
-    fun accesoContraseña() = if (password.isEmpty()) true else false
-    fun accesoCorreo() = if (correo.isEmpty()) true else false
-<<<<<<< HEAD
-
-=======
-    fun accesoUsuario() = if (usuario.isEmpty()) true else false
-
- */
 
 }
