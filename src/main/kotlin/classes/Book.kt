@@ -1,6 +1,3 @@
-package classes
-
-<<<<<<< HEAD
 class Book(var id: Int,
            var title: String,
            var author: String,
@@ -10,43 +7,11 @@ class Book(var id: Int,
            var isBorrowed: Boolean) {
 
     var raiting: Double = 5.0
-=======
-import java.util.*
-
-class Book {
-    var id: Int
-    var title: String
-    var author: String
-    var gender: String
-    var pages: Int
-    var summary: String
-    var isBorrowed: Boolean
-
-    constructor(
-        id: Int,
-        title: String,
-        author: String,
-        gender: String,
-        pages: Int,
-        summary: String,
-        isBorrowed: Boolean
-    ) {
-        this.id = id
-        this.title = title
-        this.author = author
-        this.gender = gender
-        this.pages = pages
-        this.summary = summary
-        this.isBorrowed = isBorrowed
-    }
->>>>>>> main
 
     fun getBookDetails(): String {
         return "El libro se llama $title de $author." +
                 "Contiene $pages y es del genero $gender. Se trata de $summary"
     }
-<<<<<<< HEAD
-=======
 
     fun validateFields(): Boolean {
         if (title.length > 40) {
@@ -67,5 +32,4 @@ class Book {
         }
         return true
     }
->>>>>>> main
 }
