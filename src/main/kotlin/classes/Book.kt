@@ -1,5 +1,16 @@
 package classes
 
+<<<<<<< HEAD
+class Book(var id: Int,
+           var title: String,
+           var author: String,
+           var gender: String,
+           var pages: Int,
+           var summary: String,
+           var isBorrowed: Boolean) {
+
+    var raiting: Double = 5.0
+=======
 import java.util.*
 
 class Book {
@@ -28,11 +39,14 @@ class Book {
         this.summary = summary
         this.isBorrowed = isBorrowed
     }
+>>>>>>> main
 
     fun getBookDetails(): String {
         return "El libro se llama $title de $author." +
                 "Contiene $pages y es del genero $gender. Se trata de $summary"
     }
+<<<<<<< HEAD
+=======
 
     fun validateFields(): Boolean {
         if (title.length > 40) {
@@ -53,4 +67,5 @@ class Book {
         }
         return true
     }
+>>>>>>> main
 }

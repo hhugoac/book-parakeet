@@ -1,12 +1,23 @@
 package classes
 
+<<<<<<< HEAD
+class
+Login(user: String, password : String) {
+=======
 import javax.xml.bind.JAXBElement
 
 class Login{
+>>>>>>> main
 
     var loginMessage = "Sin registro"
     var isLogin = false
 
+<<<<<<< HEAD
+    var userAndPasswordList = mutableMapOf( "root" to "12345",
+                                     "admin" to "23456",
+                                     "secretary" to "5432",
+                                     "bedu" to "bedu")
+=======
     var userAndPasswordList: MutableMap<String, String> = mutableMapOf(
         "Jim" to "Loza",
         "bedu" to "bedu")
@@ -14,6 +25,7 @@ class Login{
     //init {
       // validatePassword(user, password)
     //}
+>>>>>>> main
 
     fun singUp(userName: String, password: String): MutableMap<String, String> {
         val flag= checkRegistered(userName,password)
@@ -29,6 +41,12 @@ class Login{
         return userAndPasswordList
     }
 
+<<<<<<< HEAD
+    fun singUp(userName: String, password: String ) {
+        userAndPasswordList[userName] = password
+        loginMessage = "Registro exitoso"
+        isLogin = true
+=======
     private fun checkRegistered(userName:String,password: String):Boolean{
         val filtered = userAndPasswordList.filterKeys { it==userName }
         if(filtered.isEmpty()){
@@ -41,6 +59,7 @@ class Login{
                 return false
             }
         }
+>>>>>>> main
     }
 
     private fun validatePassword(user: String, password: String) {
@@ -63,15 +82,5 @@ class Login{
     fun signIn(user: String, password: String){
         validatePassword(user, password)
     }
-
-/*
-    fun accesoContraseña() = if (password.isEmpty()) true else false
-    fun accesoCorreo() = if (correo.isEmpty()) true else false
-<<<<<<< HEAD
-
-=======
-    fun accesoUsuario() = if (usuario.isEmpty()) true else false
-
- */
 
 }
