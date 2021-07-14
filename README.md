@@ -10,7 +10,7 @@
 * [Requerimientos](#requerimientos)
 
 ## Integrantes
-- Andrea Gutierrez Hernandez
+- Andrea Gutierrez
 - Hector Hugo Alonzo
 - Jim Loza
 - Regina Lopez Luna
