@@ -1,6 +1,7 @@
 package classes
 
-class Login(user: String, password : String) {
+class
+Login(user: String, password : String) {
 
     var loginMessage = "Sin registro"
     var isLogin = false
@@ -17,6 +18,7 @@ class Login(user: String, password : String) {
     fun singUp(userName: String, password: String ) {
         userAndPasswordList[userName] = password
         loginMessage = "Registro exitoso"
+        isLogin = true
     }
 
     private fun validatePassword(user: String, password: String){

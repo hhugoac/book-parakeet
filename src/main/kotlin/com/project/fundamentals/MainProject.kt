@@ -3,6 +3,7 @@ package com.project.fundamentals
 import classes.Book
 import classes.Login
 import functions.*
+import kotlinx.coroutines.delay
 
 val listOfBooks = mutableListOf(Book(1,"El principito",
     "Antoine de Saint-Exupéry",
@@ -21,7 +22,7 @@ suspend fun main () {
     val splash = Constants.SPLASH_TEXT.split("\n")
     splash.forEach {
         println(it)
-    //    delay(100)
+        delay(100)
 
     }
     loading("Cargando")
@@ -90,7 +91,7 @@ suspend fun main () {
                     if (iBook > listOfBooks.size) {
                         println("El libro no existe")
                     } else {
-                        println(listOfBooks.get(iBook).getBookDetails())
+                        println(listOfBooks.get(iBook-1).getBookDetails())
                     }
                     readLine()
                 } catch (e: Exception) {
@@ -139,11 +140,10 @@ suspend fun main () {
                 println("LIBROS MÁS POPULARES")
                 println("Calificación   Título")
                 listOfBooks.forEach { println("${it.raiting} ${it.title}") }
-                println("Libros más populares: $")
                 readLine()
             }
             5 -> {
-                val book1 = addBook(listOfBooks.size)
+                val book1 = addBook(listOfBooks.size+1)
                 if(book1.id != -1 ) {
                     listOfBooks.add(book1)
                     loading("Agregando")
